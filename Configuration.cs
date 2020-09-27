@@ -18,5 +18,12 @@ namespace verbine_rpg
             string[] config = {"no data"};
             return config;
         }
+
+        public static string[] CreateData() // Creates or destroys and recreates the settings file.
+        {
+            string[] config = {"no data"};
+            config[0] = "Verbine Configuration File";
+            config[1] = 
+        }
     }
 }

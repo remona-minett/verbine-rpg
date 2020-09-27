@@ -60,7 +60,7 @@ namespace verbine_rpg
             {
 
             }
-            else if (config[0] == "no data") config = Configuration.Save();
+            else if (config[0] == "no data") config = Configuration.CreateData();
         }
     }
 }
