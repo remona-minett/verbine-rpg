@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿
+using System.IO;
 using static System.IO.Directory;
 
 namespace verbine_rpg
@@ -23,7 +24,8 @@ namespace verbine_rpg
         {
             string[] config = {"no data"};
             config[0] = "Verbine Configuration File";
-            config[1] = 
+            config[1] = "0";
+            return config;
         }
     }
 }

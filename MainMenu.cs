@@ -54,8 +54,7 @@ namespace verbine_rpg
 
         public static void Options()
         {
-            string[] config;
-            config = Configuration.Load();
+            var config = Configuration.Load();
             if (config[0] != "no data")
             {
 
