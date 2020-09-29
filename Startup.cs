@@ -1,5 +1,4 @@
-﻿using System;
-using static System.Console;
+﻿using static System.Console;
 
 namespace verbine_rpg
 {
@@ -9,6 +8,7 @@ namespace verbine_rpg
         {
             WriteLine("Verbine RPG 0.1 Alpha");
             WriteLine("Loading...");
+
         }
     }
 }
