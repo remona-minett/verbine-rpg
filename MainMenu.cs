@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using static System.Console;
 using static System.Threading.Thread;
 
@@ -10,9 +11,10 @@ namespace verbine_rpg
         {
             for (;;)
             {
+                Sleep(200);
                 Clear();
-                string exitId;
-                WriteLine("S to start, O for options, Q to quit.");
+                WriteLine("Verbine RPG Main Menu\n---------------------");
+                WriteLine("S to start, Q to quit."); // O for options,
                 // Add writelines here for menu
                 var menuGenerate = ReadKey(true);
                 switch (menuGenerate.Key)
@@ -20,14 +22,14 @@ namespace verbine_rpg
                     case ConsoleKey.S: // "Start Game"
                     {
                         WriteLine("Starting...");
-                        exitId = "start";
-                        return exitId;
+                        BeginGame();
+                        break;
                     }
                     case ConsoleKey.O: // "Options"
                     {
-                        WriteLine("Loading options...");
-                        exitId = "option";
-                        return exitId;
+                        /* WriteLine("Loading options...");
+                        Options(); */
+                        goto default; // No options to configure, so disabled. Replace with "break;" when enabling.
                     }
                     case ConsoleKey.Q: // "Quit"
                     {
@@ -47,19 +49,15 @@ namespace verbine_rpg
             }
         }
 
-        public static void BeginGame()
+        public static void BeginGame() // Go here if exitId is "start".
         {
-
+            // Needs a menu
         }
 
-        public static void Options()
+        public static void Options() // Go here if exitId is "option". TODO: Method name change reflection
         {
-            var config = Configuration.Load();
-            if (config[0] != "no data")
-            {
-
-            }
-            else if (config[0] == "no data") config = Configuration.CreateData();
+            Configuration.VerifyConfig(); // Needs a menu
+            ReadKey(); // debug feature
         }
     }
 }

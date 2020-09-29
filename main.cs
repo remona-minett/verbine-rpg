@@ -1,14 +1,11 @@
-﻿using System;
-
-namespace verbine_rpg
+﻿namespace verbine_rpg
 {
     static class Core
     {
         static void Main()
         {
-            var exitId = "not set";
             Startup.Begin();
-            exitId = Menu.Startup();
+            var exitId = Menu.Startup();
             switch (exitId)
             {
                 case "start":
