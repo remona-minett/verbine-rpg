@@ -19,7 +19,7 @@ namespace verbine_rpg
             SetCurrentDirectory(vbfolder);
             return vbfolder;
         }
-        public static string[] LoadConfig() // Loads config or failing that verifies it exists.
+        public static string[] LoadConfig() // Loads config or failing that verifies it exists. You should call VerifyConfig() before this if you need more data to be returned than just the string[].
         {
             var vbfolder = GetAppdataFolder();
             SetCurrentDirectory(vbfolder);

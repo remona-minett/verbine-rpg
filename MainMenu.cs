@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 using System.Threading;
 using static System.Console;
 using static System.Threading.Thread;
@@ -7,15 +8,14 @@ namespace verbine_rpg
 {
     static class Menu
     {
-        public static string Startup()
+        public static void Startup()
         {
             for (;;)
             {
                 Sleep(200);
                 Clear();
                 WriteLine("Verbine RPG Main Menu\n---------------------");
-                WriteLine("S to start, Q to quit."); // O for options,
-                // Add writelines here for menu
+                WriteLine("S to start, O for options, Q to quit."); // Add writelines here for menu
                 var menuGenerate = ReadKey(true);
                 switch (menuGenerate.Key)
                 {
@@ -23,13 +23,13 @@ namespace verbine_rpg
                     {
                         WriteLine("Starting...");
                         BeginGame();
-                        break;
+                        goto exit;
                     }
                     case ConsoleKey.O: // "Options"
                     {
-                        /* WriteLine("Loading options...");
-                        Options(); */
-                        goto default; // No options to configure, so disabled. Replace with "break;" when enabling.
+                        WriteLine("Loading options...");
+                        Options();
+                        break;
                     }
                     case ConsoleKey.Q: // "Quit"
                     {
@@ -39,25 +39,43 @@ namespace verbine_rpg
                         Environment.Exit(0);
                         break;
                     }
-                    default: // Any key not understood by the above.
+                    default: // Any key not defined by the above.
                     {
-                        WriteLine("Invalid key, please try again.");
+                        WriteLine("Invalid key, please try another.");
                         break;
                     }
                 }
-
+                exit:
+                return;
             }
         }
 
         public static void BeginGame() // Go here if exitId is "start".
         {
-            // Needs a menu
+
+            return;
         }
 
-        public static void Options() // Go here if exitId is "option". TODO: Method name change reflection
+        public static void Options() // Go here if exitId is "option".
         {
-            Configuration.VerifyConfig(); // Needs a menu
-            ReadKey(); // debug feature
+            Configuration.VerifyConfig();
+            var config = Configuration.LoadConfig(); // Load current saved configuration into memory
+            for (;;)
+            {
+                Sleep(200);
+                Clear();
+                WriteLine("Options Menu\n-------------");
+                WriteLine("DEBUG, Q to go back."); // Add writelines here for menu
+                var menuGenerate = ReadKey(true);
+                switch (menuGenerate.Key)
+                {
+                    default:
+                        WriteLine("Invalid key, please try another.");
+                        break;
+                }
+            }
+            exit:
+            return;
         }
     }
 }

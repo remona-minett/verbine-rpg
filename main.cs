@@ -1,20 +1,13 @@
-﻿namespace verbine_rpg
+﻿using System;
+
+namespace verbine_rpg
 {
     static class Core
     {
         static void Main()
         {
             Startup.Begin();
-            var exitId = Menu.Startup();
-            switch (exitId)
-            {
-                case "start":
-                    Menu.BeginGame();
-                    break;
-                case "option":
-                    Menu.Options();
-                    break;
-            }
+            Menu.Startup(); // Make this method exit only through BeginGame(), somehow.
         }
     }
 }
