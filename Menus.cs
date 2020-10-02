@@ -6,7 +6,7 @@ using static System.Threading.Thread;
 
 namespace verbine_rpg
 {
-    static class Menu
+    static class Menus
     {
         public static void Startup()
         {
@@ -69,6 +69,8 @@ namespace verbine_rpg
                 var menuGenerate = ReadKey(true);
                 switch (menuGenerate.Key)
                 {
+                    case ConsoleKey.Q:
+                        goto exit;
                     default:
                         WriteLine("Invalid key, please try another.");
                         break;

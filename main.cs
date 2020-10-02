@@ -7,7 +7,7 @@ namespace verbine_rpg
         static void Main()
         {
             Startup.Begin();
-            Menu.Startup(); // Make this method exit only through BeginGame(), somehow.
+            Menus.Startup(); // Make this method exit only through BeginGame(), somehow.
         }
     }
 }
