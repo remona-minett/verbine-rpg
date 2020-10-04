@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Runtime.InteropServices;
-using System.Threading;
+using System.IO;
+using System.Net;
 using static System.Console;
 using static System.Threading.Thread;
 
@@ -45,9 +45,9 @@ namespace verbine_rpg
                         break;
                     }
                 }
-                exit:
-                return;
             }
+            exit:
+            return;
         }
 
         public static void BeginGame() // Go here if exitId is "start".
@@ -65,10 +65,37 @@ namespace verbine_rpg
                 Sleep(200);
                 Clear();
                 WriteLine("Options Menu\n-------------");
-                WriteLine("DEBUG, Q to go back."); // Add writelines here for menu
+                WriteLine("U for Update Check, Q to go back."); // Add writelines here for menu
                 var menuGenerate = ReadKey(true);
                 switch (menuGenerate.Key)
                 {
+                    case ConsoleKey.U:
+                        string onlver = null;
+                        string locver = null;
+                        var success = false;
+                        Clear();
+                        using (var client = new WebClient())
+                        {
+                            try
+                            {
+                                onlver = client.DownloadString("https://raw.githubusercontent.com/remona-minett/verbine-rpg/master/ver.txt");
+                                success = true;
+                            }
+                            catch (Exception)
+                            {
+                                WriteLine("Unable to connect. Try again later!");
+                                WriteLine("Press any key to continue.");
+                            }
+                        }
+
+                        if (success)
+                        {
+                            WriteLine("Current Version: 0.1.0 Alpha");
+                            WriteLine("Available Version: " + onlver);
+                            WriteLine("Press any key to continue.");
+                            ReadKey(true);
+                        }
+                        break;
                     case ConsoleKey.Q:
                         goto exit;
                     default:
