@@ -1,4 +1,5 @@
 ﻿using static System.Console;
+using static System.Threading.Thread;
 
 namespace verbine_rpg
 {
@@ -8,7 +9,7 @@ namespace verbine_rpg
         {
             WriteLine("Verbine RPG 0.1 Alpha");
             WriteLine("Loading...");
-
+            Sleep(500);
         }
     }
 }

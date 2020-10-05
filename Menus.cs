@@ -10,7 +10,7 @@ namespace verbine_rpg
     {
         public static void Startup()
         {
-            for (;;)
+            for ( ; ;)
             {
                 Sleep(200);
                 Clear();
@@ -22,7 +22,7 @@ namespace verbine_rpg
                     case ConsoleKey.S: // "Start Game"
                     {
                         WriteLine("Starting...");
-                        BeginGame();
+                        // BeginGame();
                         goto exit;
                     }
                     case ConsoleKey.O: // "Options"
@@ -50,11 +50,10 @@ namespace verbine_rpg
             return;
         }
 
-        public static void BeginGame() // Go here if exitId is "start".
+        /* public static void BeginGame() // Go here if exitId is "start".
         {
 
-            return;
-        }
+        } */
 
         public static void Options() // Go here if exitId is "option".
         {
