@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Game.cs" />
     <Compile Include="Configuration.cs" />
+    <Compile Include="Math.cs" />
     <Compile Include="Menus.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Main.cs" />

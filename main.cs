@@ -6,7 +6,6 @@
         {
             Startup.Begin(); // Basic information and short pause.
             Menus.Startup(); // Displays main menu and it's options.
-            Configuration.ListCharacters(); // debugging
         }
     }
 }

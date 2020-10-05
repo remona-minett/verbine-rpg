@@ -87,7 +87,7 @@ namespace verbine_rpg
         {
             var cdfolder = GetChardataFolder();
             SetCurrentDirectory(cdfolder);
-            var charStats = new string[10];
+            var charStats = new string[12];
             charStats = VerifyChar(charName);
             return charStats;
         }
@@ -114,7 +114,7 @@ namespace verbine_rpg
         {
             var cdfolder = GetChardataFolder();
             SetCurrentDirectory(cdfolder);
-            var charStats = new string[10];
+            var charStats = new string[12];
             var charpath = Path.Combine(charName + "char.ini"); // e.g., "stevechar.ini"
             if (File.Exists(charpath)) { charStats = File.ReadAllLines(charpath); return charStats; } // If the file exists, then read it into an array and give it back to calling logic.
             charStats = NewCharSetup(charName); // If character file doesn't exist, create it with the entered name.
@@ -123,19 +123,21 @@ namespace verbine_rpg
 
         static string[] NewCharSetup(string CharName) // Basic class. Only one available currently. Should create specific strengths and weaknesses in other classes when the option is created.
         {
-            var charStats = new string[10];
+            var charStats = new string[12]; // It is strings because of [0], unfortunately. Conversion overhead isn't too bad though. It will allow the RNG MS to randomize, too.
             charStats[0] = CharName; // Name
             charStats[1] = "100"; // Current Health
             charStats[2] = "100"; // Maximum Health
             charStats[3] = "100"; // Current Spirit (magic)
             charStats[4] = "100"; // Maximum Spirit (magic)
-            charStats[3] = "0"; // Strength (Attack damage is multiplied by X div 10 %)
-            charStats[4] = "5"; // Defence (Incoming attack damage is reduced by this value (X div 10 %)
-            charStats[5] = "0"; // Dexterity (Dodge change is multiplied by X div 10 %)
-            charStats[6] = "0"; // Intelligence (Magic damage is multiplied by X div 10 %)
-            charStats[7] = "0"; // Vitality (Health is multiplied by X div 10 %, additionally X div 5 % to resist On The Brink (<=0 hp))
+            charStats[3] = "0"; // Strength (Attack damage bonus is X div 5 %)
+            charStats[4] = "5"; // Defence (Incoming attack damage is reduced by this value (X div 10 %). Should max at 900 or something.
+            charStats[5] = "5"; // Dexterity (Dodge change is X div 10 %)
+            charStats[6] = "0"; // Intelligence (Magic damage bonus is X div 5 %)
+            charStats[7] = "0"; // Vitality (Health is X div 10 %, additionally X div 5 % to resist Critical Condition(<=0 hp))
             charStats[8] = "10"; // Critical Hit Chance (X%)
             charStats[9] = "0"; // Kills tracker
+            charStats[10] = "1"; // Player Level
+            charStats[11] = "0"; // Total XP
             SaveCharacter(charStats);
             return charStats;
         }
@@ -153,10 +155,11 @@ namespace verbine_rpg
             for ( ; ;)
             {
                 Clear();
+                WriteLine("Available Characters\n--------------------");
                 if (charList.Count == 0)
                 {
                     WriteLine("There are no characters available. Please create a character, then load it here.");
-                    Sleep(1000);
+                    Sleep(4000);
                     return null;
                 }
                 WriteLine("Please choose a character below, or Q to go back:\n");
@@ -166,7 +169,7 @@ namespace verbine_rpg
                 if (selection == "q") return null; // "If x == null, break; ?" As of typing the caller for ListCharacters has not been created and this exits code 0.
                 if (charList.Contains(selection, StringComparer.OrdinalIgnoreCase))
                 {
-                    var charStats = new string[10];
+                    var charStats = new string[12];
                     LoadCharacter(selection);
                     return charStats;
                 }

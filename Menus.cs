@@ -1,5 +1,4 @@
 ﻿using System;
-using System.IO;
 using System.Net;
 using static System.Console;
 using static System.Threading.Thread;
@@ -46,8 +45,7 @@ namespace verbine_rpg
                     }
                 }
             }
-            exit:
-            return;
+            exit:;
         }
 
         /* public static void BeginGame() // Go here if exitId is "start".
