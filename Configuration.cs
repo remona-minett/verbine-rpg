@@ -140,12 +140,12 @@ namespace verbine_rpg
             return charStats;
         }
 
-        public static string [] ListCharacters()
+        public static string[] ListCharacters()
         {
             var cdfolder = GetChardataFolder();
             SetCurrentDirectory(cdfolder);
             var charList = new List<string>();
-            foreach (var file in Directory.EnumerateFiles(cdfolder, "*char.ini"))
+            foreach (var file in EnumerateFiles(cdfolder, "*char.ini"))
             {
                 var name = File.ReadAllLines(file).Take(1).ToArray();
                 charList.Add(name[0]);
@@ -153,6 +153,12 @@ namespace verbine_rpg
             for ( ; ;)
             {
                 Clear();
+                if (charList.Count == 0)
+                {
+                    WriteLine("There are no characters available. Please create a character, then load it here.");
+                    Sleep(1000);
+                    return null;
+                }
                 WriteLine("Please choose a character below, or Q to go back:\n");
                 WriteLine(string.Join<string>("\n", charList));
                 WriteLine(""); // carriage return at the end of character listing
