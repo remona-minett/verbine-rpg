@@ -11,7 +11,7 @@ namespace verbine_rpg
             return random.NextDouble() * (maximum - minimum) + minimum;
         }
         
-        public static string[] PlayerIDamCalc(string[] charStats, double dam) // Incoming Damage (calc against player stats)
+        public static string[] PlayerIDC(string[] charStats, double dam) // Incoming Damage (calc against player stats)
         {
             var healtharr = charStats[1];
             var maxhealtharr = charStats[2];
@@ -33,7 +33,7 @@ namespace verbine_rpg
             if (health <= 0) // If health is below 0, set to 0 (Critical Condition)
             {
                 health = 0;
-                // TODO: Critical Condition code here.
+                // Todo: Critical Condition code here.
             }
             else if (health > maxhealth) // If health is above maximum, set to maximum (Impossible to overheal)
             {
@@ -45,7 +45,7 @@ namespace verbine_rpg
             return charStats; // Send back entire array.
         }
 
-        public static string[] PlayerODamCalc(string[] enemStats, double dam) // Outgoing Damage (calc against enemy stats)
+        public static string[] PlayerODC(string[] enemStats, double dam) // Outgoing Damage (calc against enemy stats)
         {
             var healtharr = enemStats[1];
             var maxhealtharr = enemStats[2];
@@ -67,9 +67,9 @@ namespace verbine_rpg
             if (health <= 0) // If health is below 0, set to 0 (Critical Condition)
             {
                 health = 0;
-                // TODO: Critical Condition code here.
+                // Todo: Critical Condition code here.
             }
-            else if (health > maxhealth) // If health is above maximum, set to maximum (Impossible to overheal)
+            else if (health > maxhealth) // If health is above maximum, set to maximum (Impossible to overheal) Todo:
             {
                 health = maxhealth;
             }

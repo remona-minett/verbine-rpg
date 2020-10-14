@@ -58,7 +58,7 @@ namespace verbine_rpg
             catch (Exception) { WriteLine("Something went wrong. Check your Appdata folder access and try again."); Sleep(1000); }
         }
 
-        public static void VerifyConfig() // Verifies the settings file exists, if not, invokes creation logic. TODO: Add bad value checks
+        public static void VerifyConfig() // Verifies the settings file exists, if not, invokes creation logic. Todo: Add bad value checks
         {
             var vbfolder = GetAppdataFolder();
             SetCurrentDirectory(vbfolder);
@@ -110,7 +110,7 @@ namespace verbine_rpg
 
         }
 
-        static string[] VerifyChar(string charName) // Verifies the character file exists, if not, invokes creation logic. TODO: Add bad value checks.
+        static string[] VerifyChar(string charName) // Verifies the character file exists, if not, invokes creation logic. Todo: Add bad value checks.
         {
             var cdfolder = GetChardataFolder();
             SetCurrentDirectory(cdfolder);
@@ -123,7 +123,7 @@ namespace verbine_rpg
 
         static string[] NewCharSetup(string CharName) // Basic class. Only one available currently. Should create specific strengths and weaknesses in other classes when the option is created.
         {
-            var charStats = new string[12]; // It is strings because of [0], unfortunately. Conversion overhead isn't too bad though. It will allow the RNG MS to randomize, too.
+            var charStats = new string[12]; // It is strings because of [0], unfortunately. Conversion overhead isn't too bad though. It will allow the RNG time to tick, too. Todo: Change this to a list of some kind later.
             charStats[0] = CharName; // Name
             charStats[1] = "100"; // Current Health
             charStats[2] = "100"; // Maximum Health

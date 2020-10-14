@@ -71,6 +71,7 @@ namespace verbine_rpg
                         string locver = null;
                         var success = false;
                         Clear();
+                        WriteLine("Checking for update...");
                         using (var client = new WebClient())
                         {
                             try
@@ -80,11 +81,12 @@ namespace verbine_rpg
                             }
                             catch (Exception)
                             {
+                                Clear();
                                 WriteLine("Unable to connect. Try again later!");
                                 WriteLine("Press any key to continue.");
                             }
                         }
-
+                        Clear();
                         if (success)
                         {
                             WriteLine("Current Version: 0.1.0 Alpha");
