@@ -7,8 +7,8 @@ The game runs as a Console window under Windows 7 SP1 and newer, and any emulato
 - RAM: At least 16 MB free
 - Screen: 640x480 or text mode.
 ## Current Version
-- Currently available version: `Not yet released`
-- Next version: `0.1.0 Alpha`
+- Current release version: `Not yet released`
+- Current prerelease version: `Not yet released`
 ## Features
 Currently, the game is not complete, but you can see below to find planned features for it's first release.
 ## Planned Features
