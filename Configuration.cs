@@ -123,18 +123,18 @@ namespace verbine_rpg
 
         static string[] NewCharSetup(string CharName) // Basic class. Only one available currently. Should create specific strengths and weaknesses in other classes when the option is created.
         {
-            var charStats = new string[12]; // It is strings because of [0], unfortunately. Conversion overhead isn't too bad though. It will allow the RNG time to tick, too. Todo: Change this to a list of some kind later.
+            var charStats = new string[12]; // It is strings because of [0], unfortunately. Conversion overhead isn't too bad though. It will allow the RNG clock to tick, too. Todo: Change this to a dict/list of some kind later.
             charStats[0] = CharName; // Name
             charStats[1] = "100"; // Current Health
             charStats[2] = "100"; // Maximum Health
-            charStats[3] = "100"; // Current Spirit (magic)
-            charStats[4] = "100"; // Maximum Spirit (magic)
+            charStats[3] = "100"; // Current Ether (magic)
+            charStats[4] = "100"; // Maximum Ether (magic)
             charStats[3] = "0"; // Strength (Attack damage bonus is X div 5 %)
-            charStats[4] = "5"; // Defence (Incoming attack damage is reduced by this value (X div 10 %). Should max at 900 or something.
-            charStats[5] = "5"; // Dexterity (Dodge change is X div 10 %)
-            charStats[6] = "0"; // Intelligence (Magic damage bonus is X div 5 %)
-            charStats[7] = "0"; // Vitality (Health is X div 10 %, additionally X div 5 % to resist Critical Condition(<=0 hp))
-            charStats[8] = "10"; // Critical Hit Chance (X%)
+            charStats[4] = "5"; // Defence (Incoming attack damage is reduced by this value (X div 10 %). Should max at 900 or something to prevent overflows. possibly 500
+            charStats[5] = "5"; // Dexterity (Dodge change is X div 10 %). Should max at 500.
+            charStats[6] = "0"; // Intelligence (Magic damage bonus is X div 5 %) 
+            charStats[7] = "0"; // Vitality (Health is X div 10 % - chance to die in cc is random)
+            charStats[8] = "10"; // Critical Hit Chance (X%) - max 25%
             charStats[9] = "0"; // Kills tracker
             charStats[10] = "1"; // Player Level
             charStats[11] = "0"; // Total XP

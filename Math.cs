@@ -64,12 +64,12 @@ namespace verbine_rpg
             }
             var adjdam = dam - def; // Defence damage reduction.
             health -= adjdam; // If dodge check fails, apply defence-adjusted damage.
-            if (health <= 0) // If health is below 0, set to 0 (Critical Condition)
+            if (health <= 0) // If health is below 0, set to 0 and make enemy die.
             {
                 health = 0;
-                // Todo: Critical Condition code here.
+                return enemStats;
             }
-            else if (health > maxhealth) // If health is above maximum, set to maximum (Impossible to overheal) Todo:
+            else if (health > maxhealth) // If health is above maximum, set to maximum (Impossible to overheal)
             {
                 health = maxhealth;
             }
